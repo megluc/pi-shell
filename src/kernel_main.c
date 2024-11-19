@@ -4,15 +4,6 @@
 char glbl[1024]; // global char array, used for clearing bss
 
 
-// delays os/kernel_main by time = microseconds
-void os_delay(unsigned long time) {
-  unsigned long tmp = get_timer_count();
-  unsigned long end = tmp + time;
-  while (tmp < end) {
-    tmp = get_timer_count();
-  }
-}
-
 // returns the execution level the kernel is currently running at
 unsigned int getEL(){
   unsigned int el;
@@ -60,6 +51,6 @@ void kernel_main() {
 
   while(1){
     esp_printf(putc, "running...\n");
-    os_delay(10000000);
+    wait_seconds(1);
   }
 }

@@ -1,6 +1,6 @@
-// delay.c
+// delays.c
 
-#include "delay.h"
+#include "delays.h"
 
 // returns pointer to the timer count register
 // timer count register stores total microseconds since boot
@@ -10,20 +10,20 @@ unsigned long get_timer_count() {
 }
 
 // delays os/kernel_main by time = microseconds
-void delay_microseconds(unsigned long time) {
+void wait_cycles(unsigned long cycles) {
   unsigned long tmp = get_timer_count();
-  unsigned long end = tmp + time;
+  unsigned long end = tmp + cycles;
   while (tmp < end) {
     tmp = get_timer_count();
   }
 }
 
 // delays os/kernel_main by time = milliseconds
-void delay_milliseconds(unsigned long time) {
-  delay_microseconds(time * 1000);
+void wait_msec(unsigned long ms) {
+  wait_cycles(ms * 1000);
 }
 
 // delay os/kernel_main by time = seconds
-void delay_seconds(unsigned long time) {
-  delay_milliseconds(time * 1000);
+void wait_seconds(unsigned long secs) {
+  wait_msec(secs * 1000);
 }
