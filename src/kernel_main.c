@@ -3,12 +3,6 @@
 
 char glbl[1024]; // global char array, used for clearing bss
 
-// returns pointer to the timer count register
-// timer count register stores total microseconds since boot
-unsigned long get_timer_count() {
-  unsigned long *timer_count_register = 0x3f003004;
-  return *timer_count_register;
-}
 
 // delays os/kernel_main by time = microseconds
 void os_delay(unsigned long time) {
@@ -61,6 +55,8 @@ void kernel_main() {
   struct table_descriptor_stage1 *L1table_ptr = &L1table;
   // loadPageTable(L1table_ptr);
   // mapPages(0x100000, 0x200000); // map virtual address 0x100000 to physical address 0x200000
+
+  shell();
 
   while(1){
     esp_printf(putc, "running...\n");
