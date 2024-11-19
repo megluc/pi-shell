@@ -9,6 +9,11 @@ void putc(int data) {
     *mu_io = data;
 }
 
+// writes string to serial port
+void uart_puts(char *str) {
+    esp_printf(putc, str);
+}
+
 // reads character from serial port
 char getc() {
     int *mu_io = (int *)MU_IO; // MU_IO register

@@ -4,4 +4,6 @@
 
 void putc(int data);
 
+void uart_puts(char *str);
+
 char getc();
