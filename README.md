@@ -10,7 +10,9 @@ A shell program for PiOS
 
 ## Issues
 
-- 
+- The `getc()` function is incredibly inconsistent with reading keyboard input, impossible to actually write a command
+  - Either there are delays/lag in getc or a register problem
+- FATFS not implemented (yet) :(
 
 ## Running Pi Shell
 
@@ -39,4 +41,6 @@ shell>
 - Tab Autocompletion
 	- When tab is pressed, the shell will attempt to autocomplete the current argument
 - Redirection/Piping
-	- `>`, `<`, `>>`, 
+	- `>`, `<`, `>>`, `|`, `||`, etc.
+- Wildcard Selector `*`
+- Aliases 
