@@ -17,12 +17,10 @@ void uart_puts(char *str) {
 // reads character from serial port
 char getc() {
     int *mu_io = (int *)MU_IO; // MU_IO register
-    while ((*mu_io & 0x01) == 0) {
-        // wait for serial data to arrive
-        // wait_msec(500);
-        // esp_printf(putc, "Waiting for serial data...\n");
+    int *mu_lsr = (int *)MU_LSR; // MU_LSR register
+    while (!(*mu_lsr & 0x01)) {
+        // wait for data to be received
     }
-    // esp_printf(putc, "getc: %c\n", (char)(*mu_io & 0xFF));
     return (char)(*mu_io & 0xFF);
 }
 
