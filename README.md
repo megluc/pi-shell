@@ -3,6 +3,7 @@ A shell program for PiOS
 ## TODO
 
 - [X] Functional keyboard input
+- [ ] Backspace support
 - [ ] Parse multiple args
 - [ ] commands.c
 - [ ] interact with file system
@@ -12,6 +13,7 @@ A shell program for PiOS
 
 - FATFS not implemented (yet) :(
 - No multi-arg support
+- Can't backspace/delete text
 
 ## Running Pi Shell
 
