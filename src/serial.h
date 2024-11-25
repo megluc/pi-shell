@@ -1,5 +1,6 @@
 // serial.h
 
+// Mini UART registers
 #define MU_IO 0x3F215040 // MU_IO register
 #define MU_LSR 0x3F215054 // MU_LSR register
 
