@@ -2,10 +2,12 @@
 
 #include "delays.h"
 
+unsigned long *timer_count_register = 0x3f003004;
+
 // returns pointer to the timer count register
 // timer count register stores total microseconds since boot
 unsigned long get_timer_count() {
-  unsigned long *timer_count_register = 0x3f003004;
+  // unsigned long *timer_count_register = 0x3f003004;
   return *timer_count_register;
 }
 
