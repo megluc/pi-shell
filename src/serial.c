@@ -18,9 +18,9 @@ void uart_puts(char *str) {
 char getc() {
     int *mu_io = (int *)MU_IO; // MU_IO register
     int *mu_lsr = (int *)MU_LSR; // MU_LSR register
-    while (!(*mu_lsr & 0x01)) {
-        // waits for line status flag
-    }
+
+    while (!(*mu_lsr & 0x01)) {}// waits for line status flag
+
     return (char)(*mu_io & 0xFF); // returns character
 }
 
