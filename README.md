@@ -2,24 +2,22 @@
 A shell program for PiOS
 ## TODO
 
-- [ ] Functional keyboard input
+- [X] Functional keyboard input
 - [ ] Parse multiple args
-- [ ] Write commands
-- [ ] Forks
+- [ ] commands.c
+- [ ] interact with file system
 - [ ] etc.
 
 ## Issues
 
-- The `getc()` function is incredibly inconsistent with reading keyboard input, impossible to actually write a command
-  - Either there are delays/lag in getc or a register problem
 - FATFS not implemented (yet) :(
+- No multi-arg support
 
 ## Running Pi Shell
 
 To launch the operating system emulator, input the following commands:
 ```bash
-make clean
-make all
+make 
 make run
 ```
 
@@ -30,7 +28,7 @@ shell>
 
 ## Current Features
 
-- A headache
+- Limited support for no-arg commands
 
 ## Planned Features
 
