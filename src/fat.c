@@ -132,7 +132,7 @@ void fatRead(char *buf, int n, struct root_directory_entry *rde) {
 
     bytes_read += bytes_to_read;
 
-    break_point();
+    // break_point();
 
     // Move to the next cluster if necessary
     if (bytes_read < n) {
