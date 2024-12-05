@@ -3,16 +3,17 @@
 #include "shell.h"
 #include "rprintf.h"
 #include "serial.h"
+#include "pstring.h"
 
 #define MAX_COMMAND_LENGTH 128
 
-int strcmp(const char *str1, const char *str2) {
-    while (*str1 && (*str1 == *str2)) {
-        str1++;
-        str2++;
-    }
-    return *(unsigned char *)str1 - *(unsigned char *)str2;
-}
+// int strcmp(const char *str1, const char *str2) {
+//     while (*str1 && (*str1 == *str2)) {
+//         str1++;
+//         str2++;
+//     }
+//     return *(unsigned char *)str1 - *(unsigned char *)str2;
+// }
 
 void shell() {
     char command[MAX_COMMAND_LENGTH];

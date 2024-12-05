@@ -21,6 +21,10 @@ OBJS = \
 				mmu.o \
 				shell.o \
 				delays.o \
+				sd.o \
+				fat.o \
+				pstring.o \
+				debug.o \
 
 
 # Make sure to keep a blank line here after OBJS list
@@ -68,4 +72,5 @@ rootfs.img:
 	mmd -i rootfs.img boot/firmware
 	mmd -i rootfs.img bin
 	mmd -i rootfs.img etc
-
+	echo "This is a test file" > test.txt
+	mcopy -i rootfs.img test.txt ::test.txt

@@ -1,6 +1,11 @@
 
 // kernel_main.c
 
+#include "fat.h"
+#include "serial.h"
+#include "rprintf.h"
+#include "delays.h"
+
 char glbl[1024]; // global char array, used for clearing bss
 
 
@@ -38,6 +43,33 @@ void kernel_main() {
   // page frame allocator
   init_pfa_list();
   struct ppage *allocd_list = allocate_physical_pages(10);
+
+  // FATFS intialization
+  fatInit();
+
+  // open file
+  char file_name[] = "TEST";
+  char *fn = &file_name;
+  char file_extension[] = "TXT";
+  char *fe = &file_extension;
+  struct root_directory_entry *file;
+  
+  esp_printf(putc, "Opening file %s.%s ...\r\n", fn, fe);
+
+
+  file = fatOpen(fn, fe);
+  
+  if (file) {
+    esp_printf(putc, "File %s.%s opened successfully\r\n", file->file_name, file->file_extension);
+  } else {
+    esp_printf(putc, "Failed to open file %s.%s\n", fn, fe);
+  }
+
+  // read file
+  char read_buffer[512];
+  char *read_buf_ptr = &read_buffer[0];
+  fatRead(read_buf_ptr, 512, file);
+  esp_printf(putc, "%s\n", read_buf_ptr);
 
   shell();
 

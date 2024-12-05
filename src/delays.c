@@ -2,25 +2,21 @@
 
 #include "delays.h"
 
-unsigned long *timer_count_register = 0x3f003004;
-
-// returns pointer to the timer count register
-// timer count register stores total microseconds since boot
 unsigned long get_timer_count() {
-  // unsigned long *timer_count_register = 0x3f003004;
+  unsigned long *timer_count_register = TIMER_COUNT_REGISTER;
   return *timer_count_register;
 }
 
-// delays os/kernel_main by time = microseconds
+// delays OS by num cycles, where each cycle is 1 microsecond
 void wait_cycles(unsigned long cycles) {
-  unsigned long tmp = get_timer_count();
-  unsigned long end = tmp + cycles;
-  while (tmp < end) {
-    tmp = get_timer_count();
+  unsigned long start = get_timer_count();
+  unsigned long end = start + cycles;
+  while (get_timer_count() < end) {
+    // do nothing
   }
 }
 
-// delays os/kernel_main by time = milliseconds
+// delays OS by num milliseconds
 void wait_msec(unsigned long ms) {
   wait_cycles(ms * 1000);
 }
